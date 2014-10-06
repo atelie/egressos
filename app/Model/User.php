@@ -2,12 +2,8 @@
 App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
     public $name = 'User';
-    public $hasMany = array(
-        'Reservation' => array(
-            'className' => 'Reservation'
-            )
-        );
-
+ 
+      
     public $validate = array(
         'username' => array(
             'required' => array(
@@ -21,6 +17,18 @@ class User extends AppModel {
                 'message' => 'Digite a senha!'
             )
         ),
+        'name' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Digite o nome!'
+            )
+        ),
+        'email' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Digite o email!'
+            )
+        ),
         'confirm_password' => array(
             'notempty' => array(
                 'rule' => array('notempty'),
@@ -32,16 +40,7 @@ class User extends AppModel {
                 'message' => 'Senha/Confirmação da Senha não são iguais'
             )
         ),
-        'limite_proj' => array(
-            'numeric' => array(
-                'rule' => 'numeric',
-                'message' => 'Apenas números são permitidos'
-             ),
-            'maxlength' => array(
-                'rule' => array('maxLength', '3'),
-                'message' => 'Máximo de 3 dígitos'
-            ),
-        )
+       
     );
 
     public function beforeSave($options = array()) {
@@ -52,19 +51,7 @@ class User extends AppModel {
         return true;
     }
 
-    public function gerenciaProfessores(){
 
-        $professores = $this->find('all', 
-            array(
-                'order' => array('nome asc'),
-                'recursive' => 0,
-                'fields' => array('id', 'username', 'nome', 'email','admin', 'limite_proj')
-                ));
-
-        $this->set(compact(array('professores')));
-
-        return $professores;
-    }
 
     public function matchPasswords() {
         $senhas = $this->data['User'];

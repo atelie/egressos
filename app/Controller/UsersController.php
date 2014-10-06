@@ -26,14 +26,6 @@ class UsersController extends AppController {
         }
     }
 
-    public function manager() {
-
-        $professores =  $this->User->gerenciaProfessores();
-       
-        $this->set(compact(array('professores')));
-
-    }
-
     public function delete ($id){
 
         $this->User->delete($id);
@@ -142,17 +134,6 @@ class UsersController extends AppController {
         $this->redirect($this->Auth->logout());
     }
 
-    function edit_projectors (){
 
-        if (empty($this->data)) {
-            $this->data = $this->User->find('first', array('conditions' => array('admin' => true)));
-            
-        }
-        else{
-                $this->User->save($this->data);
-                $this->redirect(array('controller' => 'administrators', 'action'=>'index'));
-        }
-
-    }
 }
 ?>

@@ -11,7 +11,7 @@
 </div>
 
                                 <div class="box-header">
-                                    <h1>Cadastrar Professores</h1>
+                                    <h1>Cadastrar Usuário</h1>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                 <?php echo $this->Form->create('User');?>
