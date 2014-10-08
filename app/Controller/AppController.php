@@ -38,8 +38,8 @@ class AppController extends Controller {
 
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'reservations', 
-                'action' => 'add'),
+                'controller' => 'users', 
+                'action' => 'index'),
 
             'logoutRedirect' => array(
                 'controller' => 'users', 
@@ -48,14 +48,14 @@ class AppController extends Controller {
     );
 
     var $permissoes = array(
-        'users' => array('logout' => true, 'change_pass' => true),
-        'reservations' => array('add' => true, 'delete' => true)
+        'users' => array('logout' => true, 'change_pass' => true,'index' => true),
+        'students' => array('add' => true)
     );
 
     public function beforeFilter() {
         parent::beforeFilter();
         $estaNaLogin = ($this->request->params['controller'] == 'users' AND $this->request->params['action'] == 'login');
-        $eAdmin = $this->Auth->user('admin');
+        $eAdmin = $this->Auth->user('group');
         $this->set('eAdmin', $eAdmin);
 
         $professorTemPermissao = isset($this->permissoes[$this->request->params['controller']][$this->request->params['action']]);
@@ -68,5 +68,6 @@ class AppController extends Controller {
             $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
         }
     }
+    
 
 }

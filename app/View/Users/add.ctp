@@ -6,10 +6,6 @@
     );
 ?>
 
-<div class="container" align="right">
-<?php echo $this->Html->link('Voltar ao menu', array('controller' => 'administrators', 'action'=>'index')); ?>
-</div>
-
                                 <div class="box-header">
                                     <h1>Cadastrar Usuário</h1>
                                 </div><!-- /.box-header -->
@@ -18,8 +14,15 @@
                                     <div class="box-body">
                                         <div class="form-group">
                                             <?php 
+                                                  echo $this->Form->input('name', array(
+                                                  'label' => 'Nome:',
+                                                  'class'=>'form-control'));
+                                            ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <?php 
                                                   echo $this->Form->input('username', array(
-                                                  'label' => 'Registro do Professor:',
+                                                  'label' => 'Login:',
                                                   'class'=>'form-control'));
                                             ?>
                                         </div>

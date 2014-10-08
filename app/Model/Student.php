@@ -59,6 +59,12 @@ class Student extends AppModel {
                 'message' => 'Digite o país!'
             ),
         ),
+        'curso' => array(
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'Escolha o curso!'
+            ),
+        ),
         'ano_conclusao' => array(
             'notEmpty' => array(
                 'rule' => 'notEmpty',
