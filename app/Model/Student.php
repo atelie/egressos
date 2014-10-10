@@ -59,6 +59,8 @@ class Student extends AppModel {
                 'message' => 'Digite o país!'
             ),
         ),
+        'complemento',
+
         'curso' => array(
             'notEmpty' => array(
                 'rule' => 'notEmpty',
@@ -82,7 +84,8 @@ class Student extends AppModel {
                 'rule' => 'notEmpty',
                 'message' => 'Digite o cargo na empresa!'
             ),
-        )     
+        ),
+        'observacoes',   
     );
 
 }

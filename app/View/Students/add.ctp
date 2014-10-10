@@ -7,16 +7,16 @@
 ?>
 
                                 <div class="box-header">
-                                    <h1>Cadastrar Estudante</h1>
+                                    <h1>Cadastro de Egresso</h1>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
-                                <?php echo $this->Form->create('Egresso');?>
+                                <?php echo $this->Form->create('Student');?>
                                     <div class="box-body">
 
                                     <div class="form-group">
                                             <?php 
                                                   echo $this->Form->input('nome', array(
-                                                  'label' => 'Data Nascimento:',
+                                                  'label' => 'Nome completo:',
                                                   'class'=>'form-control'));
                                             ?>
                                         </div>
@@ -67,6 +67,14 @@
                                             <?php 
                                                   echo $this->Form->input('pais', array(
                                                   'label' => 'Pais:',
+                                                  'class'=>'form-control'));
+                                            ?>
+                                        </div>
+                                        </div>
+                                            <div class="form-group">
+                                            <?php 
+                                                  echo $this->Form->input('complemento', array(
+                                                  'label' => 'Complemento:',
                                                   'class'=>'form-control'));
                                             ?>
                                         </div>
@@ -128,8 +136,8 @@
                                         </div>
                                        <div class="form-group">
                                             <?php 
-                                                  echo $this->Form->input('observacao', array(
-                                                  'label' => 'Observacao:',
+                                                  echo $this->Form->input('observacoes', array(
+                                                  'label' => 'Observações:',
                                                   'class'=>'form-control'));
                                             ?>
                                         </div>
