@@ -48,10 +48,10 @@ class AppController extends Controller {
     );
 
     var $permissoes = array(
-        'users' => array('logout' => true, 'change_pass' => true,'index' => true),
+        'users' => array('logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true),
         'students' => array('add' => true)
     );
-
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $estaNaLogin = ($this->request->params['controller'] == 'users' AND $this->request->params['action'] == 'login');
@@ -65,9 +65,10 @@ class AppController extends Controller {
 
         if (!$estaNaLogin AND !$eAdmin AND !$professorTemPermissao) {
             $this->Session->setFlash(__('<script> alert("Permissão negada."); </script>', true));
-            $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+            $this->redirect(array('controller' => 'users', 'action' => 'login'));
         }
     }
+    
     
 
 }

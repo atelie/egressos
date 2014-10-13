@@ -1,21 +1,14 @@
 $(document).ready(function() {
+    
+   
     //load tooltips
     $('*[rel=tooltip]').tooltip();
     
-    $( "input[name=ativo]" ).on( 'click', function(){
-            if ( $( this ).is(":checked") ) {
-                $( "#vencedor" ).show( 500 );
-            }
-            else
-            {
-                $( "#vencedor" ).hide( 500 );
-            }
-     } );   
-  //Mascaras   
-    $("#form_telefone").mask("(99) 9999-9999");
-    $("#form_celular").mask("(99) 9999-9999?9",{placeholder:""});
+     //Mascaras   
+    $("#StudentTelefone").mask("(99) 9999-9999");
+    $("#StudentCelular").mask("(99) 9999-9999?9",{placeholder:""});
     //$("#form_numero").mask("9?999999",{placeholder:""});
-    $("#date").mask("99/99/9999");
+    $("#StudentDataNasc").mask("99/99/9999");
     
     //valida formulário de cadastro e upload de usuarios
    
@@ -42,131 +35,101 @@ $(document).ready(function() {
     return true;
 }, "Informe uma data válida");  // Mensagem padrão
 
-    $("#form-user").validate(
+    $("#StudentAddForm").validate(
             
         {
            errorElement: "span",
            errorClass: "text-danger",
             rules: {
-               categoria_id:{
-                    required : true,
-                    notEqual: "0"
-                },
-                numero_licitacaoDownload:{
-                    required : true,
-                    notEqual: "0"
-                },
-                datarealizacao:{
+                "data[Student][data_nasc]":{
                     required : true,
                     dateBR: true
-                },
-                vencedor:{
+                },  
+                "data[Student][nome]":{
                     required : true
                 },
-                nome:{
+                "data[Student][rua]":{
                     required : true
                 },
-                sigla:{
+                "data[Student][numero]":{
                     required : true
                 },
-                username:{
+                "data[Student][bairro]":{
                     required : true
                 },
-                email:{
+                "data[Student][cidade]":{
+                    required : true
+                },
+                "data[Student][estado]":{
+                    required : true
+                },
+                "data[Student][pais]":{
+                    required : true
+                },
+                "data[Student][celular]":{
+                    required : true
+                },
+                "data[Student][email]":{
                     required : true,
                     email: true
                 },
-                password:{
+                "data[Student][curso]":{
+                    required : true
+                },  
+                "data[Student][ano_conclusao]":{
                     required : true
                 },
-                confirmPassword:{
-                    required : true,
-                    equalTo: "#form_password"
+                "data[Student][empresa]":{
+                    required : true
                 },
-                numero:{
-                     required : true
-                },
-                descricao:{
-                    required :true
-                },
-                cep:{
-                    required :true
-                },
-                estado:{
-                    required :true
-                },
-                cidade:{
-                    required :true
-                },
-                bairro:{
-                    required :true
-                },
-                endereco:{
-                    required :true
-                }
-             
-                             
+                "data[Student][cargo]":{
+                    required : true
+                }                                        
             },
             messages: {
-               categoria_id:{
-                    required : "Selecione a categoria da Licitação!",
-                    notEqual : "Selecione a categoria da Licitação!"
-           
+                "data[Student][data_nasc]":{
+                    required: "Insira uma data válida",
                 },
-                numero_licitacaoDownload:{
-                  required : "Selecione o número da Licitação!",
-                  notEqual : "Selecione o número da Licitação!"
+                "data[Student][nome]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                datarealizacao:{
-                    required: "Este campo deve ser preenchido!"
+                "data[Student][rua]":{
+                 required: "Esse campo deve ser preenchido",
                 },
-                vencedor:{
-                    required: "Este campo deve ser preenchido!"
+                "data[Student][numero]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                nome: {
-                    required: "Este campo deve ser preenchido!"
+                "data[Student][bairro]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                sigla: {
-                    required: "Este campo deve ser preenchido!"
-                },                
-                sobrenome: {
-                    required: "Este campo deve ser preenchido!"
+                "data[Student][cidade]":{
+                 required: "Esse campo deve ser preenchido",
                 },
-                username:{
-                    required : "Este campo deve ser preenchido!"
+                "data[Student][estado]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                email:{
-                    required : "Este campo deve ser preenchido!",
-                    email: "Digite um e-mail válido!"
+                "data[Student][pais]":{
+                    required: "Esse campo deve ser preenchido",
+                }, 
+                "data[Student][celular]":{
+                    required: "Esse campo deve ser preenchido",
+                }, 
+                "data[Student][email]":{
+                   required: "Esse campo deve ser preenchido",
+                    email: "Insira um e-mail válido"
                 },
-                password:{
-                    required : "Este campo deve ser preenchido!"
+                "data[Student][curso]":{
+                    required: "Esse campo deve ser preenchido",
+                },  
+                "data[Student][ano_conclusao]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                confirmPassword:{
-                    required : "Este campo deve ser preenchido!",
-                    equalTo: "Confirmação de senha incorreta!"
+                "data[Student][empresa]":{
+                    required: "Esse campo deve ser preenchido",
                 },
-                numero:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                descricao:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                cep:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                estado:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                cidade:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                bairro:{
-                    required : "Este campo deve ser preenchido!"
-                },
-                endereco:{
-                    required : "Este campo deve ser preenchido!"
-                }
+                "data[Student][cargo]":{
+                   required: "Esse campo deve ser preenchido",
+                }                  
             }
         }
     );

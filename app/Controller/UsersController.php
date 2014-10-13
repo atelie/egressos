@@ -1,9 +1,23 @@
 <?php
 class UsersController extends AppController {
 
+    public $helpers = array('Html', 'Form');
+    public $components = array('Session');
+    public $uses = array('User', 'Student');
+
     public function index() {
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
+    }
+
+    public function students_list(){
+        //if ($this->request->is('post')) { 
+            $students = $this->Student->find('all');
+            $this->set('students', $students);
+        //}
+        /*else {
+            $this->redirect(array('action' => 'index'));
+        }*/
     }
 
     public function view($id = null) {
@@ -65,10 +79,11 @@ class UsersController extends AppController {
         $this->data = $this->User->read(null, $this->Session->read('Auth.User.id'));
     }
 
-
+    
     public function beforeFilter() {
         parent::beforeFilter();
     }
+
 
     public function login(){
 

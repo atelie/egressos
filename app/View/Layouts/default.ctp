@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Unifae - SGP</title>
+        <title>Egressos - Unifae</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <?php
             echo $this->Html->css('jquery-ui.css');
@@ -15,6 +15,7 @@
     		echo $this->Html->script('jquery-1.9.1.js');
     		echo $this->Html->script('jquery-ui.js');
     		echo $this->Html->script('bootstrap.min.js');
+            echo $this->Html->script('aplication/home.js');
         ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

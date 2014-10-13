@@ -24,7 +24,9 @@
                                         <div class="form-group">
                                             <?php 
                                                   echo $this->Form->input('data_nasc', array(
+                                                  'type' => 'text',
                                                   'label' => 'Data Nascimento:',
+                                                  'placeholder' => 'dd/mm/aaaa',
                                                   'class'=>'form-control'));
                                             ?>
                                         </div>

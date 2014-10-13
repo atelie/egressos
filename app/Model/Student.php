@@ -88,5 +88,11 @@ class Student extends AppModel {
         'observacoes',   
     );
 
+    public function beforeSave($options = array()){
+        parent::beforeSave();
+        $this->data['Student']['data_nasc'] = implode('-', array_reverse(explode('/', $this->data['Student']['data_nasc'])));
+        return true;
+    }
+
 }
 ?>
