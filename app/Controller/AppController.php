@@ -49,7 +49,7 @@ class AppController extends Controller {
 
     var $permissoes = array(
         'users' => array('logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true),
-        'students' => array('add' => true)
+        'students' => array('add' => true, 'view' => true)
     );
     
     public function beforeFilter() {

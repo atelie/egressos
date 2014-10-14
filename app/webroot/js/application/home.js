@@ -7,7 +7,6 @@ $(document).ready(function() {
      //Mascaras   
     $("#StudentTelefone").mask("(99) 9999-9999");
     $("#StudentCelular").mask("(99) 9999-9999?9",{placeholder:""});
-    //$("#form_numero").mask("9?999999",{placeholder:""});
     $("#StudentDataNasc").mask("99/99/9999");
     
     //valida formulário de cadastro e upload de usuarios

@@ -11,11 +11,17 @@
             echo $this->Html->css('font-awesome.min');
     		echo $this->Html->css('AdminLTE');
     		echo $this->Html->css('ionicons.min');
+            echo $this->Html->css('application/home');
 
     		echo $this->Html->script('jquery-1.9.1.js');
     		echo $this->Html->script('jquery-ui.js');
     		echo $this->Html->script('bootstrap.min.js');
-            echo $this->Html->script('aplication/home.js');
+            echo $this->Html->script('AdminLTE/app.js');
+            echo $this->Html->script('application/home.js');
+            echo $this->Html->script('jquery.validate.min.js');
+            echo $this->Html->script('jquery.maskedinput.js');
+
+
         ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,7 +36,7 @@
         <header class="header">
             <?php 
                 $url = Router::url('/', true); 
-                $tipo = ($eAdmin == 0)? 'reservations/add':'administrators' ;
+                $tipo = 'users/index';
             ?>
             <a href="<?php echo $url.$tipo; ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
@@ -94,14 +100,64 @@
         </header>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Right side column. Contains the navbar and content of the page -->
+
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="text-center info">
+                            <p><?php echo $nomeUser; ?></p>
+                        </div>
+                    </div>
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                     <li class="treeview">
+                         <a href="#">
+                             <i class="fa fa-user"></i>
+                             <span> Usuário </span>
+                             <i class="fa fa-angle-left pull-right"></i>
+                         </a>
+                         
+                         <ul class="treeview-menu">            
+                                <li><a href="" class="fa fa-eye"></i> Visualizar meus dados</a></li>                               
+                                <li><a href=""><i class="fa fa-edit"></i> Editar meus dados</a></li>
+                                
+                                <li><a href=""><i class="fa  fa-list"></i> Listar</a></li>
+                                
+                                <li><a href=""><i class="fa fa-plus"></i> Adicionar </a></li>
+                                
+                        </ul>
+                     </li>  
+                    <li class="treeview">
+                          <a href="#">
+                              <i class="fa fa-desktop"></i>
+                              <span>Desenvolvido por:</span>
+                              <i class="fa fa-angle-left pull-right"></i>
+
+                          </a>
+                          <ul class="treeview-menu">                                           
+                                 <li><div class="desenvolvimento"><a target="_blank" href="#"> </a></div></li>                            
+                          </ul>
+                      </li>     
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
                 <!-- Main content -->
                 <section class="content">
-                    <div class="well">
+                    <div>
                         <?php echo $this->Session->flash(); ?>
 						<?php echo $this->fetch('content'); ?>
                     </div>
                     
                 </section><!-- /.content -->
+            </aside>
         </div><!-- ./wrapper -->
 
     </body>

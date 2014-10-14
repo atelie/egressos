@@ -9,6 +9,13 @@ class StudentsController extends AppController {
         $this->set('students', $this->paginate());
     }
 
+    public function view($id = null) {
+        $this->Student->id = $id;
+        if (!$this->Student->exists()) {
+            throw new NotFoundException(__('Egresso inválido!'));
+        }
+        $this->set('student', $this->Student->read(null, $id));
+    }
 
     public function add() {
         $this->layout = 'students/default';

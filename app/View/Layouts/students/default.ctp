@@ -11,6 +11,7 @@
             echo $this->Html->css('font-awesome.min');
             echo $this->Html->css('AdminLTE');
             echo $this->Html->css('ionicons.min');
+            echo $this->Html->css('application/home');
 
             echo $this->Html->script('jquery-1.9.1.js');
             echo $this->Html->script('jquery-ui.js');
