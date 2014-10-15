@@ -1,9 +1,2 @@
-<h1>Index do usuario</h1>
+<h1>Bem-vindo ao UNIFAE EGRESSOS!</h1>
 
-<?php
-
-	echo $this->Html->link(__('Listagem'), array(
-		'controller' => 'users',
-		'action' => 'students_list'));
-
-?>

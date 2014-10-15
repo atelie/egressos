@@ -1,6 +1,9 @@
 <?php
 App::uses('AuthComponent', 'Controller/Component');
 class Student extends AppModel {
+
+    public $belongsTo = array('Course');
+
     public $name = 'Student';
  
       
@@ -61,7 +64,7 @@ class Student extends AppModel {
         ),
         'complemento',
 
-        'curso' => array(
+        'course_id' => array(
             'notEmpty' => array(
                 'rule' => 'notEmpty',
                 'message' => 'Escolha o curso!'

@@ -72,9 +72,10 @@ $(document).ready(function() {
                     required : true,
                     email: true
                 },
-                "data[Student][curso]":{
-                    required : true
-                },  
+                "data[Student][course_id]":{
+                    required : true,
+                    notEqual : "0"
+                },
                 "data[Student][ano_conclusao]":{
                     required : true
                 },
@@ -117,8 +118,9 @@ $(document).ready(function() {
                    required: "Esse campo deve ser preenchido",
                     email: "Insira um e-mail válido"
                 },
-                "data[Student][curso]":{
+                "data[Student][course_id]":{
                     required: "Esse campo deve ser preenchido",
+                    notEqual: "Selecione o curso"
                 },  
                 "data[Student][ano_conclusao]":{
                     required: "Esse campo deve ser preenchido",

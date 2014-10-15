@@ -113,6 +113,7 @@
                     
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
+                   <!-- 
                      <li class="treeview">
                          <a href="#">
                              <i class="fa fa-user"></i>
@@ -121,12 +122,46 @@
                          </a>
                          
                          <ul class="treeview-menu">            
+                                
                                 <li><a href="" class="fa fa-eye"></i> Visualizar meus dados</a></li>                               
                                 <li><a href=""><i class="fa fa-edit"></i> Editar meus dados</a></li>
                                 
-                                <li><a href=""><i class="fa  fa-list"></i> Listar</a></li>
+                                <li><a href=""><i class="fa  fa-list"></i> Listar</a></li> 
                                 
-                                <li><a href=""><i class="fa fa-plus"></i> Adicionar </a></li>
+                                <li><a href=""><i class="fa fa-list"></i> Listagem de usuario</a></li>
+                                
+                        </ul>
+                     </li>  
+                     -->
+                     <li class="treeview">
+                         <a href="#">
+                             <i class="fa fa-user"></i>
+                             <span> Egressos </span>
+                             <i class="fa fa-angle-left pull-right"></i>
+                         </a>
+                         
+                         <ul class="treeview-menu">            
+                                <!--
+                                <li><a href="" class="fa fa-eye"></i> Visualizar meus dados</a></li>                               
+                                <li><a href=""><i class="fa fa-edit"></i> Editar meus dados</a></li>
+                                
+                                <li><a href=""><i class="fa  fa-list"></i> Listar</a></li> -->
+
+                                <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-list"></i> Listagem de Egressos',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'students_list',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                                </li>
+
                                 
                         </ul>
                      </li>  

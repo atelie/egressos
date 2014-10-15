@@ -3,7 +3,7 @@ class UsersController extends AppController {
 
     public $helpers = array('Html', 'Form');
     public $components = array('Session');
-    public $uses = array('User', 'Student');
+    public $uses = array('User', 'Student', 'Course');
 
     public function index() {
         $this->User->recursive = 0;
@@ -11,13 +11,21 @@ class UsersController extends AppController {
     }
 
     public function students_list(){
-        //if ($this->request->is('post')) { 
-            $students = $this->Student->find('all');
-            $this->set('students', $students);
-        //}
-        /*else {
-            $this->redirect(array('action' => 'index'));
-        }*/
+        $lista_cursos = array();
+
+        $students = $this->Student->find('all');
+         $contador = 0;
+        foreach ($students as $key => $student) {
+            $lista_cursos[$contador] = $this->Course->find('first',array(
+                'conditions'=> array(
+                   'Course.id' => $student['Student']['course_id']
+                    ),
+                ));
+            $contador++;
+        }
+        $this->set('students', $students);
+        $this->set('cursos',$lista_cursos);
+
     }
 
     public function view($id = null) {

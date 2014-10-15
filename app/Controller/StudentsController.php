@@ -2,7 +2,7 @@
 class StudentsController extends AppController {
     public $helpers = array('Html', 'Form');
     public $components = array('Session');
-    public $uses = array('Student');
+    public $uses = array('Student','Course');
 
     public function index() {
         $this->Student->recursive = 0;
@@ -18,6 +18,8 @@ class StudentsController extends AppController {
     }
 
     public function add() {
+        $this->set('courses', array('[Selecione]') + $this->Student->Course->find('list'));
+        
         $this->layout = 'students/default';
         if ($this->request->is('post')) {
             $this->Student->create();
@@ -30,7 +32,14 @@ class StudentsController extends AppController {
         }
     }
 
-   public function beforeFilter() {
+    public function delete ($id){
+        $this->Student->delete($id);
+        $this->redirect(array(
+            'controller' => 'users', 
+            'action' => 'students_list'));
+    }
+
+    public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('add');
         }

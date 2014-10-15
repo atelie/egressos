@@ -1,5 +1,14 @@
 <?php
-    
+
+$input_course = array(
+  'label' => 'Curso: *', 
+  'id' => 'course_id',
+  'class' => 'form-control',
+  'div' => array(
+    'class' => 'input_course',
+    ));
+
+
     $Enviar = array(
     'label' => 'Enviar',
     'class' => 'btn-block btn-primary'
@@ -108,10 +117,8 @@
                                             ?>
                                         </div>
                                         <div class="form-group">
-                                            <?php 
-                                                  echo $this->Form->input('curso', array(
-                                                  'label' => 'Curso: *',
-                                                  'class'=>'form-control'));
+                                            <?php   
+                                                echo $this->Form->input('course_id', $input_course);  
                                             ?>
                                         </div>
                                        <div class="form-group">
