@@ -90,7 +90,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-6"> 
 					<p>
 						<strong>Curso:</strong>
-						<?php echo $student['Student']['curso']; ?>
+						<?php echo $nome_curso['Course']['name']; ?>
 					</p>  
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6"> 

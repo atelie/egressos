@@ -11,9 +11,24 @@ class StudentsController extends AppController {
 
     public function view($id = null) {
         $this->Student->id = $id;
+
         if (!$this->Student->exists()) {
             throw new NotFoundException(__('Egresso inválido!'));
         }
+
+        $aluno = $this->Student->find('first',array(
+        'conditions'=> array(
+           'Student.id' => $id
+            ),
+        ));
+
+        $nome_curso = $this->Course->find('first',array(
+        'conditions'=> array(
+           'Course.id' => $aluno['Student']['course_id']
+            ),
+        ));
+
+        $this->set('nome_curso', $nome_curso);
         $this->set('student', $this->Student->read(null, $id));
     }
 
