@@ -10,11 +10,72 @@ class UsersController extends AppController {
         $this->set('users', $this->paginate());
     }
 
+    public function search_by_course(){
+        $this->set('courses', array('[SELECIONE O CURSO]') + $this->Course->find('list'));
+    }
+
+    public function search_by_year(){
+
+    }
+
+    public function students_course(){
+
+        if ($this->request->is('post')) { 
+
+                $id_busca = $this->request->data['Users']['course_id'];
+
+                if ($id_busca == '0') {
+                    $this->Session->setFlash(__('<script> alert("Selecione o curso!"); </script>',true));
+                    $this->redirect(array('action' => 'search_by_course'));
+                } else {
+                    $course = $this->Course->find('first', 
+                    array( 'conditions' => array('Course.id' => $id_busca)));
+                    $course_name = $course['Course']['name'];
+                    $this->set('curso', $course_name);
+
+                    $this->set('students', $this->Student->find('all', array(
+                    'conditions' => array('Student.course_id' => $id_busca)
+                    )));
+                }
+
+            }else {
+                $this->redirect(array('action' => 'search_by_course'));
+            }
+    }
+
+
+    public function students_year(){
+       
+       if ($this->request->is('post')) { 
+
+                $ano_conclusao = $this->request->data['User']['ano_conclusao'];              
+                $students = $this->Student->find('all', array(
+                'conditions' => array('Student.ano_conclusao' => $ano_conclusao)
+                ));
+
+                $contador = 0;
+                foreach ($students as $key => $student) {
+                  $lista_cursos[$contador] = $this->Course->find('first',array(
+                  'conditions'=> array(
+                    'Course.id' => $student['Student']['course_id']
+                     ),
+                  ));
+                  $contador++;
+               }
+               $this->set('students',$students);
+               $this->set('cursos',$lista_cursos);
+
+
+            }else {
+                $this->redirect(array('action' => 'search_by_year'));
+            }
+    }
+
     public function students_list(){
         $lista_cursos = array();
 
         $students = $this->Student->find('all');
-         $contador = 0;
+        $contador = 0;
         foreach ($students as $key => $student) {
             $lista_cursos[$contador] = $this->Course->find('first',array(
                 'conditions'=> array(
@@ -25,7 +86,6 @@ class UsersController extends AppController {
         }
         $this->set('students', $students);
         $this->set('cursos',$lista_cursos);
-
     }
 
     public function view($id = null) {

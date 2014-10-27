@@ -150,10 +150,40 @@
                                 <li>
                                 <?php
                                   echo $this->Html->link(
-                                     '<i class="fa fa-list"></i> Listagem de Egressos',
+                                     '<i class="fa fa-list"></i> Listagem todos',
                                       array(
                                           'controller'=>'users',
                                           'action'=>'students_list',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                                </li>
+
+                                <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-list"></i> Listar por curso',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'search_by_course',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                                </li>
+
+                                <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-list"></i> Listar por ano de conclusao',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'search_by_year',
                                       ),
                                       array(
                                           'escape'=>false 

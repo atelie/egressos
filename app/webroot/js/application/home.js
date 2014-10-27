@@ -8,7 +8,7 @@ $(document).ready(function() {
     $("#StudentTelefone").mask("(99) 9999-9999");
     $("#StudentCelular").mask("(99) 9999-9999?9",{placeholder:""});
     $("#StudentDataNasc").mask("99/99/9999");
-    
+    $("#UserAnoConclusao").mask("9999");
     //valida formulário de cadastro e upload de usuarios
    
    jQuery.validator.addMethod("notEqual", function(value, element, param) {
@@ -33,6 +33,29 @@ $(document).ready(function() {
     if(ano < 1900)return false;
     return true;
 }, "Informe uma data válida");  // Mensagem padrão
+
+
+
+
+
+    $("#UserStudentsYearForm").validate(            
+            {
+               errorElement: "span",
+               errorClass: "text-danger",
+                rules: {
+                    "data[User][ano_conclusao]":{
+                        required : true
+                    }                                       
+                },
+                messages: {
+                    "data[User][ano_conclusao]":{
+                        required: "Insira um ano com 4 digitos",
+                    }             
+                }
+            }
+        );
+    
+
 
     $("#StudentAddForm").validate(
             
