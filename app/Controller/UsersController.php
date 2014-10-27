@@ -62,8 +62,13 @@ class UsersController extends AppController {
                   ));
                   $contador++;
                }
-               $this->set('students',$students);
-               $this->set('cursos',$lista_cursos);
+               $this->set('students', $students);
+               $this->set('cursos', $lista_cursos);
+
+               if($students == null){
+                    $this->Session->setFlash(__('<script> alert("Não existem egressos deste ano cadastrados!"); </script>', true));
+                    $this->redirect(array('action' => 'search_by_year'));
+               }
 
 
             }else {
