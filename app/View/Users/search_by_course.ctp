@@ -3,7 +3,7 @@
 
 	$continuar = array(
 		'label' => 'Continuar',
-		'class' => 'btn btn-primary'
+		'class' => 'btn btn-primary '
 		);
 
 	$selecionaCursos = array(
@@ -25,8 +25,13 @@
 			echo $this->Form->create('Users', array('action' => 'students_course'));
 			
 			echo $this->Form->input('course_id', $selecionaCursos);
-			
-			echo $this->Form->end($continuar);
+          
+			?>
+		</div>
+
+		<div align="center" class="botao-espaco">
+			<?php 			
+				echo $this->Form->end($continuar);
 			?>
 		</div>
 	</div>

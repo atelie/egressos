@@ -180,7 +180,7 @@
                                 <li>
                                 <?php
                                   echo $this->Html->link(
-                                     '<i class="fa fa-list"></i> Listar por ano de conclusao',
+                                     '<i class="fa fa-list"></i> Listar por ano de conclusão',
                                       array(
                                           'controller'=>'users',
                                           'action'=>'search_by_year',

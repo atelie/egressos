@@ -28,3 +28,7 @@ textarea.form-control{
 .right{
     text-align: right;
 }
+
+.botao-espaco{
+    padding: 10px;
+}

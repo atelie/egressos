@@ -27,8 +27,12 @@
 				 array('label' => 'Ano de Conclusão: ',
 				 	   'class'=>'form-control'
 		    ));
-			
-			echo $this->Form->end($continuar);
 			?>
 		</div>
+		<div align="center" class="botao-espaco">
+			<?php
+				echo $this->Form->end($continuar);
+			?>
+		</div>
+
 	</div>
