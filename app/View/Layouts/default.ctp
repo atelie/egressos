@@ -133,6 +133,47 @@
                         </ul>
                      </li>  
                      -->
+
+                     <li class="treeview">
+                         <a href="#">
+                             <i class="fa fa-users"></i>
+                             <span> Usuários </span>
+                             <i class="fa fa-angle-left pull-right"></i>
+                         </a>
+                         
+                         <ul class="treeview-menu">
+                             <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-plus"></i> Cadastrar administrador',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'add_adm',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                              </li>
+                              <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-plus"></i> Cadastrar estagiário',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'add_est',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                              </li>
+                          </ul>
+                      </li>
+
+
                      <li class="treeview">
                          <a href="#">
                              <i class="fa fa-user"></i>

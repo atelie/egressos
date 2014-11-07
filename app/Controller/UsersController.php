@@ -149,12 +149,26 @@ class UsersController extends AppController {
         $this->set('user', $this->User->read(null, $id));
     }
 
-    public function add() {
+    public function add_adm() {
         if ($this->request->is('post')) {
             $this->User->create();
+            $this->request->data['User']['group'] = 1;
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('<script> alert("Usuario salvo com sucesso!"); </script>', true));
-                $this->redirect(array('action' => 'add'));
+                $this->redirect(array('action' => 'index'));
+            } else {
+               $this->Session->setFlash(__('<script> alert("O usuário não pode ser salvo."); </script>', true));
+            }
+        }
+    }
+
+    public function add_est() {
+        if ($this->request->is('post')) {
+            $this->User->create();
+            $this->request->data['User']['group'] = 0;
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('<script> alert("Usuario salvo com sucesso!"); </script>', true));
+                $this->redirect(array('action' => 'index'));
             } else {
                $this->Session->setFlash(__('<script> alert("O usuário não pode ser salvo."); </script>', true));
             }
