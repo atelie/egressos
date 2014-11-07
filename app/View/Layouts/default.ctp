@@ -192,9 +192,52 @@
                                 ?>
                                 </li>
 
+                                <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-list"></i> Listar por ano e curso',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'search_by_year_and_course',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                                </li>
+
+
                                 
                         </ul>
                      </li>  
+
+                      <li class="treeview">
+                         <a href="#">
+                             <i class="fa fa-mortar-board"></i>
+                             <span> Cursos </span>
+                             <i class="fa fa-angle-left pull-right"></i>
+                         </a>
+                         
+                         <ul class="treeview-menu">
+                             <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-plus"></i> Cadastrar curso',
+                                      array(
+                                          'controller'=>'courses',
+                                          'action'=>'add',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                              </li>
+                          </ul>
+                      </li>
+
+
                     <li class="treeview">
                           <a href="#">
                               <i class="fa fa-desktop"></i>

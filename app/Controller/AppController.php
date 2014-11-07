@@ -48,7 +48,7 @@ class AppController extends Controller {
     );
 
     var $permissoes = array(
-        'users' => array('logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true, 'students_course' => true, 'search_by_course' => true, 'students_year' => true, 'search_by_year' => true),
+        'users' => array('logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true, 'students_course' => true, 'search_by_course' => true, 'students_year' => true, 'search_by_year' => true, 'search_by_year_and_course' => true, 'students_course_year' => true),
         'students' => array('add' => true, 'view' => true, 'delete' => true),
         'courses' =>array('add'=>true)
     );

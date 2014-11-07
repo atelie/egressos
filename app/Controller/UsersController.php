@@ -18,11 +18,15 @@ class UsersController extends AppController {
 
     }
 
+    public function search_by_year_and_course(){
+        $this->set('courses', array('[SELECIONE O CURSO]') + $this->Course->find('list'));
+    }
+
     public function students_course(){
 
         if ($this->request->is('post')) { 
 
-                $id_busca = $this->request->data['Users']['course_id'];
+                $id_busca = $this->request->data['User']['course_id'];
 
                 if ($id_busca == '0') {
                     $this->Session->setFlash(__('<script> alert("Selecione o curso!"); </script>',true));
@@ -34,12 +38,53 @@ class UsersController extends AppController {
                     $this->set('curso', $course_name);
 
                     $this->set('students', $this->Student->find('all', array(
-                    'conditions' => array('Student.course_id' => $id_busca)
+                    'conditions' => array('Student.course_id' => $id_busca),
+                    'order' => array('Student.nome asc')
+
                     )));
                 }
 
             }else {
                 $this->redirect(array('action' => 'search_by_course'));
+            }
+    }
+
+    public function students_course_year(){
+
+        if ($this->request->is('post')) { 
+
+                $id_busca = $this->request->data['User']['course_id'];
+                $ano_conclusao = $this->request->data['User']['ano_conclusao'];
+
+                if ($id_busca == '0' OR $ano_conclusao == null) {
+                    $this->Session->setFlash(__('<script> alert("Selecione o curso e/ou ano!"); </script>',true));
+                    $this->redirect(array('action' => 'search_by_year_and_course'));
+                } else {
+                    $course = $this->Course->find('first', 
+                    array( 'conditions' => array('Course.id' => $id_busca)));
+                    $course_name = $course['Course']['name'];
+                    $this->set('curso', $course_name);
+
+                    $students = $this->Student->find('all', array(
+                    'conditions' => array(
+                        'Student.course_id' => $id_busca,
+                        'AND' =>array('Student.ano_conclusao' => $ano_conclusao)
+                        ),
+                    'order' => array('Student.nome asc')
+                    ));
+
+                    if($students == null){
+                        $this->Session->setFlash(__('<script> alert("Não existem egressos deste ano e curso cadastrados!"); </script>', true));
+                        $this->redirect(array('action' => 'search_by_year_and_course'));
+                    }
+
+                    $this->set('students', $students);
+
+                }
+
+            }else {
+                $this->Session->setFlash(__('<script> alert("Não existem egressos deste ano e curso cadastrados!"); </script>', true));
+                $this->redirect(array('action' => 'search_by_year_and_course'));
             }
     }
 
@@ -50,7 +95,8 @@ class UsersController extends AppController {
 
                 $ano_conclusao = $this->request->data['User']['ano_conclusao'];              
                 $students = $this->Student->find('all', array(
-                'conditions' => array('Student.ano_conclusao' => $ano_conclusao)
+                'conditions' => array('Student.ano_conclusao' => $ano_conclusao),
+                'order' => array('Student.nome asc')
                 ));
 
                 $contador = 0;
@@ -79,13 +125,15 @@ class UsersController extends AppController {
     public function students_list(){
         $lista_cursos = array();
 
-        $students = $this->Student->find('all');
+        $students = $this->Student->find('all',array(
+            'order' => array('Student.nome asc')));
         $contador = 0;
         foreach ($students as $key => $student) {
             $lista_cursos[$contador] = $this->Course->find('first',array(
                 'conditions'=> array(
                    'Course.id' => $student['Student']['course_id']
                     ),
+
                 ));
             $contador++;
         }
