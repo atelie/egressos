@@ -284,10 +284,12 @@
                               <i class="fa fa-desktop"></i>
                               <span>Desenvolvido por:</span>
                               <i class="fa fa-angle-left pull-right"></i>
-
                           </a>
                           <ul class="treeview-menu">                                           
-                                 <li><div class="desenvolvimento"><a target="_blank" href="#"> </a></div></li>                            
+                                 <li><div class="desenvolvimento"><a target="_blank" href="#"> </a></div></li> 
+                                 <li align="center">
+                                  Ateliê de Software - UNIFAE/Webgoal
+                                 </li>                           
                           </ul>
                       </li>     
 
