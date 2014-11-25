@@ -177,15 +177,16 @@ class UsersController extends AppController {
 
     public function manager() {
 
-        $professores =  $this->User->gerenciaProfessores();
+        $usuarios = $this->User->find('all',array(
+            'order' => array('User.name asc')));
        
-        $this->set(compact(array('professores')));
-
+        $this->set('usuarios', $usuarios);
     }
 
     public function delete ($id){
 
         $this->User->delete($id);
+        $this->Session->setFlash(__('<script> alert("O usuário foi excluído com sucesso!"); </script>', true));
         $this->redirect(array(
                             'controller' => 'users', 'action' => 'manager'));
 

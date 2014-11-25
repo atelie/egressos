@@ -49,6 +49,7 @@ class StudentsController extends AppController {
 
     public function delete ($id){
         $this->Student->delete($id);
+        $this->Session->setFlash(__('<script> alert("Egresso excluído com sucesso!"); </script>', true));
         $this->redirect(array(
             'controller' => 'users', 
             'action' => 'students_list'));

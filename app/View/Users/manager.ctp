@@ -1,28 +1,45 @@
-<div class="container" align="right">
-<?php echo $this->Html->link('Voltar ao menu', array('controller' => 'administrators', 'action'=>'index')); ?>
 
-</div>
-
-<h2 align="center"> Gerenciamento de Professores </h2>
-
-<table class="table table-bordered table-striped">
-
-  <tr>
-    <th>Registro</th> 
-    <th>Nome</th>
-    <th>E-mail</th>
-    <th>Excluir Professor</th>
-    <th>Editar Professor</th>
-  </tr>
-
-  <?php foreach ($professores as $professor): ?>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><?php echo $professor['User']['username']; ?> </td>
-      <td><?php echo $professor['User']['nome']; ?> </td>
-      <td><?php echo $professor['User']['email']; ?></td>
-      <td><?php echo $this->Html->link('Deletar', array('action'=>'delete', $professor['User']['id'])); ?></td>
-      <td><?php echo $this->Html->link('Editar', array('action'=>'edit', $professor['User']['id'])); ?></td>
+      <th class="text-info"> <i class="fa fa-barcode"></i> 
+        Nome
+      </th>
+      <th class="text-info"> <i class="fa fa-user"></i>
+        Login
+      </th>
+      <th class="text-info"> <i class="fa fa-user"></i>
+        Email
+      </th>
+      <th class="text-info"> <i class="fa fa-envelope"></i>
+        Nível
+      </th>
+      <th>Opções</th>
+
+
     </tr>
-  <?php endforeach; ?>
-  
+  </thead>
+
+  <tbody>
+    <?php foreach ($usuarios as $usu): ?>   
+      <tr>
+
+        <td><?php echo $usu['User']['name']; ?></td>
+        <td><?php echo $usu['User']['username']; ?></td>
+        <td><?php echo $usu['User']['email']; ?></td>
+        <td><?php echo $usu['User']['group']; ?></td>
+        <td>
+          <div class="btn-toolbar">
+            <div>
+
+              <a href="../users/delete/<?php echo $usu['User']['id'];?>" data-original-title="Excluir" rel="tooltip" data-toggle="excluir" data-placement="top" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
+            </div>  
+          </div>
+        </td>
+      </tr>   
+    <?php endforeach; ?>  
+  </tbody>
 </table>
+
+
+
