@@ -47,7 +47,7 @@ class AppController extends Controller {
         )
     );
 
-    var $permissoes = array(
+   /* var $permissoes = array(
         'users' => array('add_adm' => true, 'add_est' => true, 'logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true, 'students_course' => true, 'search_by_course' => true, 'students_year' => true, 'search_by_year' => true, 'search_by_year_and_course' => true, 'students_course_year' => true),
         'students' => array('add' => true, 'view' => true, 'delete' => true),
         'courses' =>array('add'=>true)
@@ -68,7 +68,42 @@ class AppController extends Controller {
             $this->Session->setFlash(__('<script> alert("Permissão negada."); </script>', true));
             $this->redirect(array('controller' => 'users', 'action' => 'login'));
         }
-    }
+    }*/
+
+     var $permissoesEst = array(
+        'users' => array('index' => true, 'login' => true, 'logout' => true, 'change_pass' => true,'students_list' => true, 'students_course' => true, 'search_by_course' => true, 'students_year' => true, 'search_by_year' => true, 'search_by_year_and_course' => true, 'students_course_year' => true),
+        'students' => array('index' => true, 'add' => true, 'view' => true,)
+        );
+
+    var $permissoesAdm = array(
+        'users' => array('add_adm' => true, 'add_est' => true, 'login' => true, 'logout' => true, 'change_pass' => true,'index' => true, 'students_list' => true, 'students_course' => true, 'search_by_course' => true, 'students_year' => true, 'search_by_year' => true, 'search_by_year_and_course' => true, 'students_course_year' => true),
+        'students' => array('add' => true, 'view' => true, 'delete' => true),
+        'courses' =>array('add'=>true)
+
+        );
+
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $estaNaLogin = ($this->request->params['controller'] == 'users' AND $this->request->params['action'] == 'login');
+        if($estaNaLogin) return;
+
+        $eAdmin = $this->Auth->user('group');
+        $this->set('eAdmin', $eAdmin);
+        $userName = $this->Auth->user('name');
+        $this->set('nomeUser', $userName);
+
+        
+        $estagiarioTemPermissao = !empty($this->permissoesEst[$this->request->params['controller']][$this->request->params['action']]);
+        if(!$eAdmin AND $estagiarioTemPermissao) return;
+        
+        $adminTemPermissao = !empty($this->permissoesAdm[$this->request->params['controller']][$this->request->params['action']]);
+        if($eAdmin AND $adminTemPermissao) return;      
+       
+
+        $this->Session->setFlash(__('<script> alert("Permissão negada."); </script>', true));
+        $this->redirect(array('controller' => 'users', 'action' => 'login'));    
+    } 
     
     
 

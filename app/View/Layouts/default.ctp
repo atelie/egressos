@@ -170,6 +170,20 @@
                                   );
                                 ?>
                               </li>
+                              <li>
+                                <?php
+                                  echo $this->Html->link(
+                                     '<i class="fa fa-plus"></i> Gerenciar usuários',
+                                      array(
+                                          'controller'=>'users',
+                                          'action'=>'manager',
+                                      ),
+                                      array(
+                                          'escape'=>false 
+                                      )
+                                  );
+                                ?>
+                              </li>
                           </ul>
                       </li>
 

@@ -175,6 +175,14 @@ class UsersController extends AppController {
         }
     }
 
+    public function manager() {
+
+        $professores =  $this->User->gerenciaProfessores();
+       
+        $this->set(compact(array('professores')));
+
+    }
+
     public function delete ($id){
 
         $this->User->delete($id);
@@ -240,6 +248,9 @@ class UsersController extends AppController {
             $this->request->data = null;
         }
     }
+
+
+   
 
     public function logout() {
         $this->redirect($this->Auth->logout());
