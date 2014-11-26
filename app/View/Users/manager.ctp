@@ -27,7 +27,11 @@
         <td><?php echo $usu['User']['name']; ?></td>
         <td><?php echo $usu['User']['username']; ?></td>
         <td><?php echo $usu['User']['email']; ?></td>
-        <td><?php echo $usu['User']['group']; ?></td>
+        <td>
+           <?php 
+              echo ($usu['User']['group'] == 1)? "Administrador":"EStagiário"; 
+             ?>
+        </td>
         <td>
           <div class="btn-toolbar">
             <div>
